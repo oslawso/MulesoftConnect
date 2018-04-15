@@ -26,16 +26,16 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
         <logger message="WHOLE PAYLOAD --&gt; #[payload]" level="INFO" doc:name="Logger"/>
         <logger message=" PAYLOAD --&gt; #[payload.email]" level="INFO" doc:name="Copy_of_Logger"/>
         <choice doc:name="Choice">
-            <when expression="#[payload.email == &quot;oslawso@gmail.com&quot;]">
+            <when expression="#[payload.email == &quot;test@gmail.com&quot;]">
                 <dw:transform-message doc:name="Transform Message">
                     <dw:set-payload><![CDATA[%dw 1.0
 %output application/json
 ---
 {
 	id: 123,
-	email: "oslawso@gmail.com",
-	firstName: "Oswaldo",
-	lastName: "Perez",
+	email: "test@gmail.com",
+	firstName: "Test",
+	lastName: "User",
 	token: "123456"
 }]]></dw:set-payload>
                 </dw:transform-message>
