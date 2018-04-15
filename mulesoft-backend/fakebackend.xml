@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd">
+    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8061" doc:name="HTTP Listener Configuration"/>
+    <flow name="fakebackendFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/api/*" doc:name="HTTP"/>
+        <json:json-to-object-transformer returnClass="java.util.HashMap" doc:name="JSON to Object"/>
+        <json:object-to-json-transformer doc:name="Object to JSON"/>
+        <dw:transform-message doc:name="Transform Message">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	email: payload.email,
+	password: payload.password
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <logger message="WHOLE PAYLOAD --&gt; #[payload]" level="INFO" doc:name="Logger"/>
+        <logger message=" PAYLOAD --&gt; #[payload.email]" level="INFO" doc:name="Copy_of_Logger"/>
+        <choice doc:name="Choice">
+            <when expression="#[payload.email == &quot;oslawso@gmail.com&quot;]">
+                <dw:transform-message doc:name="Transform Message">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	id: 123,
+	email: "oslawso@gmail.com",
+	firstName: "Oswaldo",
+	lastName: "Perez",
+	token: "123456"
+}]]></dw:set-payload>
+                </dw:transform-message>
+            </when>
+            <otherwise>
+                <set-payload value="{&quot;message&quot; : &quot;Authentication failed&quot;}" doc:name="Set Payload"/>
+                <set-property propertyName="http-status" value="400" doc:name="Property"/>
+            </otherwise>
+        </choice>
+        <set-property doc:name="Access-Control-Allow-Origin" propertyName="Access-Control-Allow-Origin" value="*" />
+        <logger message="output --&gt; #[payload]" level="INFO" doc:name="Copy_of_Logger"/>
+    </flow>
+</mule>
