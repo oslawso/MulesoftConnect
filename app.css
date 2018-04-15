@@ -1,0 +1,28 @@
+﻿a {
+    cursor: pointer;
+}
+
+.help-block {
+    font-size: 12px;
+}
+
+.header{
+    margin-top: 5px;
+}
+
+.header .divider{
+    height: 50px;
+    width: 1px;
+    background-color: #555555;
+    float: right;
+}
+
+.header-logo{
+    float: right;
+    margin-top: -5px;
+}
+
+.mule-logo{
+    margin-left: 15px;
+    margin-top: 7px;
+}
