@@ -42,7 +42,7 @@ http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/jso
             </when>
             <otherwise>
                 <set-payload value="{&quot;message&quot; : &quot;Authentication failed&quot;}" doc:name="Set Payload"/>
-                <set-property propertyName="http-status" value="400" doc:name="Property"/>
+                <set-property propertyName="http.status" value="400" doc:name="Property"/>
             </otherwise>
         </choice>
         <set-property doc:name="Access-Control-Allow-Origin" propertyName="Access-Control-Allow-Origin" value="*" />
