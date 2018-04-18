@@ -2,6 +2,7 @@
 import { Router } from '@angular/router';
 
 import { AlertService, UserService } from '../_services/index';
+import { User } from '../_models/user';
 
 @Component({
     moduleId: module.id,
@@ -9,7 +10,7 @@ import { AlertService, UserService } from '../_services/index';
 })
 
 export class RegisterComponent {
-    model: any = {};
+    model: User = new User();
     loading = false;
 
     constructor(

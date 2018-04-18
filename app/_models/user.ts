@@ -1,6 +1,6 @@
-﻿import {Address} from './address';
-
-export class User {
+﻿import { Address } from './address';
+import { OnInit } from '@angular/core';
+export class User implements OnInit {
     id: string;
     firstName: string;
     lastName: string;
@@ -11,4 +11,11 @@ export class User {
     ssn: string;
     dateOfBirth: string;
     password: string;
+
+    constructor() {
+        this.address = new Address();
+    }
+
+    ngOnInit() { 
+    }
 }
