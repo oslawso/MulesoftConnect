@@ -16,7 +16,7 @@ import { AlertService, AuthenticationService, UserService } from './_services/in
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
-import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { UsageComponent } from './usage/index';
 
 @NgModule({
     imports: [
@@ -24,14 +24,14 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
         FormsModule,
         HttpClientModule,
         routing,
-        Ng2GoogleChartsModule,
     ],
     declarations: [
         AppComponent,
         AlertComponent,
         HomeComponent,
         LoginComponent,
-        RegisterComponent
+        RegisterComponent,
+        UsageComponent,
     ],
     providers: [
         AuthGuard,
