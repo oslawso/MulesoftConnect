@@ -22,7 +22,8 @@ export class UserService {
     }
 
     update(user: User) {
-        return this.http.put('/api/users/' + user.id, user);
+        console.log(JSON.stringify(user));
+        return this.http.put('http://localhost:8061/api/users/' + user.id, JSON.stringify(user));
     }
 
     delete(id: number) {
