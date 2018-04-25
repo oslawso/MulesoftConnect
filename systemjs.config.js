@@ -25,7 +25,8 @@
 
             // other libraries
             'rxjs': 'npm:rxjs',
-            'tslib': 'npm:tslib/tslib.js'
+            'tslib': 'npm:tslib/tslib.js',
+            'ng2-google-charts': 'npm:ng2-google-charts/bundles/ng2-google-charts.umd.min.js'
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {

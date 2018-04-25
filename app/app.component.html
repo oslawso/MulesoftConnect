@@ -15,8 +15,8 @@
             <alert></alert>
             <div class="menu" *ngIf="isLoggedIn$ | async">
                 <p><a [routerLink]="['/login']">Logout</a></p>
-                <p><a [routerLink]="['/account/usage']">Usage</a></p>
                 <p><a [routerLink]="['/account/details']">Account Details</a></p>
+                <p><a [routerLink]="['/']">Home</a></p>
             </div>
             <router-outlet></router-outlet>
         </div>

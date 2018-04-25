@@ -12,8 +12,11 @@ export class User implements OnInit {
     dateOfBirth: string;
     password: string;
 
-    constructor() {
+    constructor(id: string, firstName: string, lastName: string) {
         this.address = new Address();
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     ngOnInit() { 
