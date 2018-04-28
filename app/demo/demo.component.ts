@@ -31,7 +31,7 @@ export class DemoComponent implements OnInit {
     responsive: true
   };
   public barChartLabels:string[] = [];
-  public barChartType:string = 'bar';
+  public barChartType:string = 'line';// type of chart
   public barChartLegend:boolean = true;
   public barColors:any[] = [
     {backgroundColor:'#3fb8ff'},
@@ -40,8 +40,9 @@ export class DemoComponent implements OnInit {
 
   public barChartData:any[] = [];
   
+  //default values
   ngOnInit(){ 
-    this.charStartDate = this.datePipe.transform(Date.now(),'yyyy-MM-dd');
+    this.charStartDate = '2018-04-01';
     this.charEndDate = this.datePipe.transform(Date.now(),'yyyy-MM-dd');
     this.charType = 'intra-day';//Usagetype can be intra-day, days or months
     this.userId = Number.parseInt(this.route.snapshot.paramMap.get('userId')) || 23;
@@ -79,7 +80,7 @@ export class DemoComponent implements OnInit {
               } else if(this.charType == 'days'){
                 tempLabels.push(this.datePipe.transform(item.start,'MM/dd/yyyy'));
               } else {
-                tempLabels.push(this.datePipe.transform(item.start,'MMMM'));
+                tempLabels.push(item.start);
               }
             });
 
@@ -92,9 +93,6 @@ export class DemoComponent implements OnInit {
           }
       }
     );
-    // let clone = JSON.parse(JSON.stringify(this.barChartData));
-    // clone[0].data = this.barChartData;
-    // this.barChartData = clone;
   }  
 
   getDetails() {
