@@ -4,6 +4,7 @@ import { FormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import { ChartsModule } from 'ng2-charts';
 
 // used to create fake backend
 //import { fakeBackendProvider } from './_helpers/index';
@@ -19,6 +20,7 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { UsageComponent } from './usage/index';
+import { DemoComponent } from './demo/index';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { UsageComponent } from './usage/index';
         FormsModule,
         HttpClientModule,
         routing,
+        ChartsModule,
     ],
     declarations: [
         AppComponent,
@@ -36,6 +39,7 @@ import { UsageComponent } from './usage/index';
         LoginComponent,
         RegisterComponent,
         UsageComponent,
+        DemoComponent,
     ],
     providers: [
         AuthGuard,

@@ -1,14 +1,11 @@
 ﻿
-<div class="col-md-6 col-md-offset-3">
-    <h2>Hi {{currentUser.firstName}}!</h2>
-    <p>You're logged in on Mulesoft Connect!</p>
-    
-    <h3>All registered users:</h3>
-    <ul>
-        <li *ngFor="let user of users">
-            {{user.firstName}} {{user.lastName}}
-            - <a (click)="getUsage(user.id)">Usage</a>
-        </li>
-    </ul>
-   
+<div class="col-md-8 col-md-offset-2">
+    <h2>Welcome to Mulesoft Connect!</h2>
+
+    <h3>Accounts:</h3>    
+</div>
+
+<div *ngFor="let user of users">
+        <a (click)="getUsage(user.id)" class="account-label col-md-3 col-md-offset-1">{{user.firstName}} {{user.lastName}}</a>
+        
 </div>

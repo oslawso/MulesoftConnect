@@ -1,11 +1,11 @@
-﻿import { Component, OnInit, OnChanges } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from './_services/authentication.service';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-    moduleId: module.id,
+    // moduleId: module.id,
     selector: 'app',
-    templateUrl: 'app.component.html'
+    templateUrl: 'app/app.component.html'
 })
 
 export class AppComponent implements OnInit {

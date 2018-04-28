@@ -1,0 +1,36 @@
+
+<div class="menu">
+    <p><a  (click)="getDetails()">Account Details</a></p>
+    <p><a [routerLink]="['/']">Home</a></p>
+</div>
+<div class="form-group">
+    <label for="charType">Chart Type.</label>
+    <select (change)="doSomething()" [(ngModel)]="charType" name="charType">
+        <option *ngFor="let cto of charTypeOptions" [value]="cto">
+            {{cto}}
+        </option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="charStartDate">Starting date for the Chart.</label>
+    <input type="date" class="form-control" name="charStartDate" [(ngModel)]="charStartDate" (change)="doSomething()" />
+</div>
+<div class="form-group" *ngIf="charType != 'intra-day'">
+    <label for="charEndDate">Ending date for the Chart.</label>
+    <input type="date" class="form-control" name="charEndDate" [(ngModel)]="charEndDate" (change)="doSomething()" />
+</div>
+
+<div class="bar-chart" *ngIf="barChartData.length > 0">
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [colors]="barColors"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>

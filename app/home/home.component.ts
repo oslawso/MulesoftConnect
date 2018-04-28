@@ -5,8 +5,8 @@ import { User } from '../_models/index';
 import { UserService } from '../_services/index';
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'home.component.html'
+    // moduleId: module.id,
+    templateUrl: 'app/home/home.component.html'
 })
 
 export class HomeComponent implements OnInit {
@@ -32,11 +32,10 @@ export class HomeComponent implements OnInit {
     }
 
     private loadAllUsers() {
-        // this.userService.getAll().subscribe(users => { this.users = users; });
         this.users = [
-            new User("12345","John","Doe"),
-            new User("41241","Jean","Lee"),
-            new User("09876", "Karl", "Dell")
+            new User("23","John","Doe"),
+            new User("23","Jean","Lee"),
+            new User("23", "Karl", "Dell")
         ];
     }
 }

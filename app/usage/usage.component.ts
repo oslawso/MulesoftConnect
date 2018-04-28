@@ -4,11 +4,8 @@ import { DatePipe } from '@angular/common';
 
 import { AlertService, UserService } from '../_services/index';
 
-
-
 @Component({
-    moduleId: module.id,
-    templateUrl: 'usage.component.html',
+    templateUrl: 'app/usage/usage.component.html',
     providers: [DatePipe]
 })
 export class UsageComponent implements OnInit {
@@ -29,7 +26,6 @@ export class UsageComponent implements OnInit {
             startup: true,
           },
           colors: ['#3fb8ff', '#00bc4b'],
-
         }
       };
 
@@ -42,7 +38,7 @@ export class UsageComponent implements OnInit {
  
     ngOnInit(){ 
         this.userId = Number.parseInt(this.route.snapshot.paramMap.get('userId'));
-        this.userService.getUsage(this.userId).subscribe(
+        this.userService.getUsage(this.userId,'','','').subscribe(
             response => { 
                 var arr = response['readings'];
                 

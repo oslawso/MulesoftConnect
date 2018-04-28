@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs/Subscription';
 import { AlertService } from '../_services/index';
 
 @Component({
-    moduleId: module.id,
+    // moduleId: module.id,
     selector: 'alert',
-    templateUrl: 'alert.component.html'
+    templateUrl: 'app/_directives/alert.component.html'
 })
 
 export class AlertComponent implements OnDestroy {

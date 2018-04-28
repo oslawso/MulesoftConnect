@@ -1,106 +1,53 @@
-﻿<div class="col-md-6 col-md-offset-3" *ngIf="registerFlag">
-    <h2>Register</h2>
-    <h4>Contact Information</h4>
-    <form name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
-            <label for="firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
-            <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
-            <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
-            <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
-            <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phone.valid }">
-            <label for="phone">Phone</label>
-            <input type="string" class="form-control" name="phone" [(ngModel)]="model.phone" #phone="ngModel" required />
-            <div *ngIf="f.submitted && !phone.valid" class="help-block">Phone is required</div>
-        </div>
-        <div class="form-group">
-            <label for="ssn">Social Security Number</label>
-            <input type="string" class="form-control" name="ssn" [(ngModel)]="model.ssn" #ssn="ngModel"/>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !dateOfBirth.valid }">
-            <label for="dateOfBirth">Date Of Birth</label>
-            <input type="date" class="form-control" name="dateOfBirth" [(ngModel)]="model.dateOfBirth" #dateOfBirth="ngModel" required />
-            <div *ngIf="f.submitted && !dateOfBirth.valid" class="help-block">Date Of Birth is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" required />
-            <div *ngIf="f.submitted && !password.valid" class="help-block">Password is required</div>
-        </div>
-        <h4>Address Information</h4>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !addressLine1.valid }">
-            <label for="addressLine1">Address 1</label>
-            <input type="string" class="form-control" name="addressLine1" [(ngModel)]="model.address.addressLine1" #addressLine1="ngModel" required />
-            <div *ngIf="f.submitted && !addressLine1.valid" class="help-block">Address 1 is required</div>
-        </div>
-        <div class="form-group">
-            <label for="addressLine2">Address 2</label>
-            <input type="string" class="form-control" name="addressLine2" [(ngModel)]="model.address.addressLine2" #addressLine2="ngModel" />
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !zipCode.valid }">
-            <label for="zipCode">Zip Code</label>
-            <input type="string" class="form-control" name="zipCode" [(ngModel)]="model.address.zipCode" #zipCode="ngModel" required />
-            <div *ngIf="f.submitted && !zipCode.valid" class="help-block">Zip Code is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !city.valid }">
-            <label for="city">City</label>
-            <input type="string" class="form-control" name="city" [(ngModel)]="model.address.city" #city="ngModel" required />
-            <div *ngIf="f.submitted && !city.valid" class="help-block">City is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !state.valid }">
-            <label for="state">State</label>
-            <input type="string" class="form-control" name="state" [(ngModel)]="model.address.state" #state="ngModel" required />
-            <div *ngIf="f.submitted && !state.valid" class="help-block">State is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !country.valid }">
-            <label for="country">Country</label>
-            <input type="string" class="form-control" name="country" [(ngModel)]="model.address.country" #country="ngModel" required />
-            <div *ngIf="f.submitted && !country.valid" class="help-block">Country is required</div>
-        </div>
-        <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Register</button>
-            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-            <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
-        </div>
-    </form>
+﻿<div class="menu">
+    <p><a  (click)="getUsage()">Account Usage</a></p>
+    <p><a [routerLink]="['/']">Home</a></p>
 </div>
-<div class="col-md-6 col-md-offset-3" *ngIf="!registerFlag">
-    <h2>Register</h2>
-    <h4>Contact Information</h4>
-    <form name="form" (ngSubmit)="f.form.valid && update()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !firstName.valid }">
-            <label for="firstName">First Name</label>
-            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
-            <div *ngIf="f.submitted && !firstName.valid" class="help-block">First Name is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !lastName.valid }">
-            <label for="lastName">Last Name</label>
-            <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" required />
-            <div *ngIf="f.submitted && !lastName.valid" class="help-block">Last Name is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" name="email" [(ngModel)]="model.email" #email="ngModel" required />
-            <div *ngIf="f.submitted && !email.valid" class="help-block">Email is required</div>
-        </div>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !phone.valid }">
-            <label for="phone">Phone</label>
-            <input type="string" class="form-control" name="phone" [(ngModel)]="model.phone" #phone="ngModel" required />
-            <div *ngIf="f.submitted && !phone.valid" class="help-block">Phone is required</div>
-        </div>
-        <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Update</button>
-            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-            <a [routerLink]="['']" class="btn btn-link">Cancel</a>
-        </div>
-    </form>
+<div class="col-md-6 col-md-offset-3 account-information">
+    <h2>Account</h2>
+    <h3>Contact Information</h3>
+    <div class="form-group">
+        <label for="firstName">First Name</label>
+        <p>{{model.firstName}}</p>
+    </div>
+    <div class="form-group">
+        <label for="firstName">Last Name</label>
+        <p>{{model.lastName}}</p>
+    </div>
+    <div class="form-group">
+        <label for="firstName">email</label>
+        <p>{{model.email}}</p>
+    </div>
+    <div class="form-group">
+        <label for="firstName">Phone</label>
+        <p>{{model.phone}}</p>
+    </div>
+    <div class="form-group">
+        <label for="firstName">Social Security Number</label>
+        <p>{{model.ssn}}</p>
+    </div>
+    <div class="form-group">
+        <label for="firstName">Date Of Birth</label>
+        <p>{{model.dateOfBirth}}</p>
+    </div>
+    <h3>Address Information</h3>
+    <div class="form-group">
+        <label for="firstName">Address 1</label>
+        <p>{{model.address.addressLine1}}</p>
+    </div>
+    <div class="form-group">
+        <label for="firstName">ZIP Code</label>
+        <p>{{model.address.zipCode}}</p>
+    </div>
+    <div class="form-group">
+        <label for="firstName">City</label>
+        <p>{{model.address.city}}</p>
+    </div>
+    <div class="form-group">
+        <label for="firstName">State</label>
+        <p>{{model.address.state}}</p>
+    </div>
+    <div class="form-group">
+        <label for="firstName">Country</label>
+        <p>{{model.address.country}}</p>
+    </div>
 </div>
