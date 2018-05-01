@@ -33,9 +33,7 @@ export class HomeComponent implements OnInit {
 
     private loadAllUsers() {
         this.users = [
-            new User("23","John","Doe"),
-            new User("23","Jean","Lee"),
-            new User("23", "Karl", "Dell")
+            new User("23","John","Doe")
         ];
     }
 }

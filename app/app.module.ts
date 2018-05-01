@@ -21,6 +21,7 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { UsageComponent } from './usage/index';
 import { DemoComponent } from './demo/index';
+import { LandingComponent } from './landing/index';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { DemoComponent } from './demo/index';
         RegisterComponent,
         UsageComponent,
         DemoComponent,
+        LandingComponent,
     ],
     providers: [
         AuthGuard,
